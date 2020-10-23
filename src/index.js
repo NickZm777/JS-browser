@@ -2,91 +2,71 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-console */
 
-const browserTree = {
-    label: "Window",
-    children: [{
-            label: "DOM - Document Object Model; DOM Tree",
-            children: [{
-                    label: "document",
-                    children: [],
-                },
-                {
-                    label: "CSSOM - CSS Object Model",
-                    children: [],
-                },
-            ],
-        },
-        {
-            label: "BOM - Browser Object Model",
-            children: [{
-                    label: "navigator",
-                    children: [],
-                },
-                {
-                    label: "screen",
-                    children: [],
-                },
-                {
-                    label: "location",
-                    children: [],
-                },
-                {
-                    label: "frames",
-                    children: [],
-                },
-                {
-                    label: "history",
-                    children: [],
-                },
-                {
-                    label: "XMLHttpReques",
-                    children: [],
-                },
-            ],
-        },
-        {
-            label: "JavaScript",
-            children: [{
-                    label: "Object",
-                    children: [],
-                },
-                {
-                    label: "Array",
-                    children: [],
-                },
-                {
-                    label: "Function",
-                    children: [],
-                },
-                {
-                    label: "...",
-                    children: [],
-                },
-            ],
-        },
-    ],
-};
-
-
-
-function renderTree (obj) {
+/* eslint-disable no-restricted-syntax */
+const eventTarget = {
+    label: 'node',
+    children: [
+      {
+        label: "text",
+        children: []
+      },
+      {
+        label: "comment",
+        children: []
+      },
+      {
+        label: "element",
+        children: [
+          {
+            label: "SVGelement",
+            children: []
+          },
+          {
+            label: "HTMLElement",
+            children: [
+              {
+                label: "HTMLINputElement",
+                children: []
+              },
+              {
+                label: "HTMLBodyElement",
+                children: []
+              },
+              {
+                label: "HTMLAnchorElement",
+                children: []
+              },
+            ]
+          },
+        ]
+      },
+    ]
+  }
+  
+  function renderTree(myObject) {
     let ul = document.createElement('ul')
-    for(let key in obj) {
+    
+    function rec (obj, dom) {
+      let newUl = document.createElement('ul')
+      for(let key in obj) {
         if(!Array.isArray(obj[key])) {
-            let li = document.createElement('li')
-            li.innerHTML = obj[key]
-            ul.appendChild(li)
-        } else if(Array.isArray(obj[key]) && obj[key].length > 0 ) {
-            document.createElement('ul')
-            obj[key].forEach((item) => {
-            renderTree(item)
-            })
+          let li = document.createElement('li')
+          li.innerHTML = obj[key]
+          newUl.append(li)
+        } else if (Array.isArray(obj[key]) && obj[key].length > 0) {
+          obj[key].forEach((item) => {
+            rec(item, newUl)
+          })
+          
         }
+      }
+      dom.append(newUl)
     }
-}
-
-renderTree(browserTree)
-
+    rec(myObject, ul)
+    document.body.append(ul)
+  }
+  
+  renderTree(eventTarget)
 
 
 
