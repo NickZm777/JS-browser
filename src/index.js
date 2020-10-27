@@ -4,8 +4,8 @@
 /* eslint-disable no-console */
 /* eslint-disable no-restricted-syntax */
 
-import {windowTree, eventTarget} from './objectTrees.js'
-import {renderTree} from './renderTree.js'
+import {windowTree, eventTarget} from './tree/objectTrees.js'
+import {renderTree} from './tree/renderTree.js'
 
 renderTree(windowTree);
 renderTree(eventTarget)
