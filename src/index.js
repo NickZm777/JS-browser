@@ -9,3 +9,4 @@ import {renderTree} from './tree/renderTree.js'
 
 renderTree(windowTree);
 renderTree(eventTarget)
+

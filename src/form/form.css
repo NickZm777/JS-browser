@@ -1,0 +1,41 @@
+form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    column-gap: 10px;
+    width: 50%;
+    border-radius: 10px;
+    margin: 0px auto;
+    }
+div {
+    display: inline-block;
+    margin: 10px;
+}
+
+
+h1, .firstName, .middleName, .lastName, .phone, .email, .country, .title, .registration, .approve {
+    grid-column: 2/3;
+    text-align: center;
+}
+
+input {
+    background-color: rgb(253, 251, 251);
+    color: rgb(109, 108, 108);
+    border-radius: 3px;
+}
+
+
+
+form {
+    background-color: #cceaea;
+}
+
+.approve button {
+    border-radius: 10px;
+    background-color: #cecebb;
+    color: blue;
+    margin-bottom: 20px;
+    font-size: 1em;
+    padding: 5px 20px;
+
+}
